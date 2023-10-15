@@ -42,3 +42,12 @@ Relational databases extend further on document stores. There are multiple relat
     key1 = valueC
     key2 = valueD
 
+The _/_ operator automatically increases a counter, and uses this in a new couplet, where the counter is the key, and relation is the value. So the first relation would then be identical to:
+
+    [1]
+    key1 = valueA
+    key2 = valueB
+
+the second one would be [2], etc.
+
+## Graph databases
