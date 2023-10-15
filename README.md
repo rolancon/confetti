@@ -52,7 +52,6 @@ the second one would have a new section header _[2]_, etc.
 
 There are no _null_ values in set theory, therefore if a field value is _null_ in one of the relations, then just leave it out. Suppose _valueC_ of _key1_ is _null_ in the second row:
 
-    _..._
     /
     key2 = valueD
 
