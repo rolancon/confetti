@@ -18,6 +18,8 @@ Multiple key-value pairs are then simply:
     key1 = valueA
     key2 = valueB
 
+Together these couplets form a set (a set containing couplets is called a relation).
+
 ## Document stores
 
 Document stores have more deeply nested structures. To support them use a section header: a section header consists of a pair of square brackets (_[ ]_). In between the square brackets you specific the path from one key to the next key, separated by dots (_._). Under the section header you specify the key-value that is nested in the key path.
@@ -26,7 +28,17 @@ Document stores have more deeply nested structures. To support them use a sectio
     key3 = valueA
     key4 = valueB
 
-So in the above section, we actually have two paths: _key1.key2.key3_ and _key1.key2.key4_, which are both separate sets. These paths are actually nested couplets, from one key (_key1_) to the next one (_key2_) which functions as its value, but also as the key for the next couplet (_key2.key3_). The final couplet is then a regular key-value pair.
+So in the above section, we actually have two separate paths: _key1.key2.key3_ and _key1.key2.key4_. These paths are actually nested couplets, from one key (_key1_) to the next one (_key2_) which functions as its value, but also as the key for the next couplet (_key2.key3_). The final couplet is then a regular key-value pair.
 
+## Relational databases
 
+Relational databases extend further on document stores. There are multiple relations (often called records or rows). The relations have similar keys (known as columns), but different values (or fields). The relations are also are numbered incrementally.  This can be achieved automatically as follows:
+
+    [schema.table]
+    /
+    key1 = valueA
+    key2 = valueB
+    /
+    key1 = valueC
+    key2 = valueD
 
