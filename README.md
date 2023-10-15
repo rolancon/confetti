@@ -48,6 +48,6 @@ The _/_ operator automatically increases a counter, and uses this in a new coupl
     key1 = valueA
     key2 = valueB
 
-the second one would be [2], etc.
+the second one would have a new section header [2], etc.
 
 ## Graph databases
