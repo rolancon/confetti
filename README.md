@@ -50,4 +50,10 @@ The _/_ operator automatically increases a counter, and uses this in a new coupl
 
 the second one would have a new section header _[2]_, etc.
 
+There are no _null_ values in set theory, therefore if a field value is _null_ in one of the relations, then just leave it out. Suppose valueC of key1 is _null_:
+
+    _..._
+    /
+    key2 = valueD
+
 ## Graph databases
