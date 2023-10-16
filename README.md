@@ -31,7 +31,7 @@ A set consists of two or more terms, separated with a comma **,**:
 
 ## Comments
 
-Single-line comments start with one semicolon **:** on a separate line:
+Single-line comments start with one semicolon **;** on a separate line:
 
     ; I am an atom
     term
@@ -127,6 +127,25 @@ In order to add more than one table just add more table headers:
 The Confetti file that contains these table definitions constitutes the database (or the horde in Data Algebra terminology). A file could be named _customer-db.cft_ to indicate that it contains the schema and data of a customer database, consisting of several tables that constitute the database.
 
 ### RDF triple stores
+
+A _triple_ is a data structure which mimics a sentence consisting of a subject, a predicate and an object. In the sentence
+
+   We eat food.
+
+**we** is the subject, **eat** the predicate, and **food** is the object.
+
+In Confetti this looks like three terms combined with slashes **/**, which indicate the ordering from left to right:
+
+    we/eat/food
+
+This triple could be decomposed in the following two couplets
+
+    we = eat
+    eat = food
+
+but then the ordering disappears; still, it is not possible to construct a different triple since the only way they compose is through the predicate eat.
+
+
 
 ### Graph databases
 
