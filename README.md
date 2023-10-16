@@ -342,6 +342,22 @@ The slashes between the field values cause them to be added as a list (couplets 
 
 ### Spreadsheets
 
+Spreadsheets have some similarities with CSV files with a header. The fields in a spreadsheet are called _cells_, and their layout and naming is also dictated through named verticals columns and numbered horizontal rows.  Since one spreadsheet can contain multiple tabs, a tab is part of a set (a clan).
+
+    [spreadheet-tab,]
+    /
+    aa = some-amount
+    ac = cell-value-ac
+    /
+    aa = some-other-amount
+    ac = cell-value-ac
+    /
+    /
+    aa = total
+    ac = sum-of-ac1-and-ac2
+
+The aa columnn contains the labels: two rows with names in their cells, labelling the column next to it (ac) as containing different amounts. As you can see from the naming, the second column, ab, has been skipped. The third row is skipped, and the fourth row shows that the cell value in column ac contains the total: the sum of the two cell values of the first two two rows in the same column.
+    
 ### XML
 
 ### JSON
