@@ -176,8 +176,8 @@ meaning someone unspecified eats food.
 A triple itself can be part of another triple by stringing them together with spaces. Using a combination of triples with blank nodes we can combine them in creative ways, such as:
 
     -.named.alice knows [-]
-    named.bob
-    who-knows -.named.eve
+      named.bob
+      who-knows -.named.eve
 
 By replacing the hyphen with _someone_, and repeating the _[-]_, this reads as the following sentence:
 
