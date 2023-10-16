@@ -406,3 +406,35 @@ For the support for JSON's atomic datatypes, see the Types section below.
 
 ### Types
 
+So far we've only seen examples of the term type, which is a special case of the string type. For atoms and leaf nodes Confetti, however, also support types which are very similar to JSON types. They are:
+- the **null** type
+- the **boolean** type
+- the **number** type
+- the **string** type.
+
+The null type has no syntactic encoding, but is basically denotated by an empty value:
+
+    key = 
+
+The boolean type contains two values:
+
+    yes
+
+for **true** values and
+
+    no
+
+for **false** values.
+
+The number is very similar to the JSON number type. A number can optionally have a negative sign **-**, a decimal separator **.** and an exponent lowercase **e** with an optional negative sign **-**:
+
+    1
+    10
+    -2
+    2.5
+    -3.50
+    45e6
+    -45e6
+    45e-6
+    -45e-6
+
