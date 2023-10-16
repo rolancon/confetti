@@ -29,6 +29,22 @@ A set consists of two or more terms, separated with a comma **,**:
 
     term-a, term-b
 
+## Comments
+
+Single-line comments start with one semicolon **:** on a separate line:
+
+    ; I am an atom
+    term
+
+Multi-line comments start end with two consecutive semicolons **;;** on separate lines:
+
+    ;;
+      This is a set containing two atoms:
+      term-a
+      term-b
+    ;;
+    term-a, term-b
+
 ## Data stores
 
 ### Key-value stores
@@ -108,7 +124,7 @@ In order to add more than one table just add more table headers:
 
     [table2,]
 
-The Confetti file that contains these table definitions constitutes the database schema (or the horde in Data Algebra terminology). A file could be named _customer-db.cft_ to indicate that it contains the schema and data of a customer database, consisting of several tables that constitute the database.
+The Confetti file that contains these table definitions constitutes the database (or the horde in Data Algebra terminology). A file could be named _customer-db.cft_ to indicate that it contains the schema and data of a customer database, consisting of several tables that constitute the database.
 
 ### RDF triple stores
 
