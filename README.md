@@ -17,8 +17,11 @@ A single _term_ is called an _atom_.
 The naming convention for a term is as follows: a _base term_ should start with a lower-case letter [a-z], potentially followed by one ore more lower case letters or digits [0-9]. More than one base term can be combined into a _compound term_ with a hyphen **-**. Examples of terms:
 
     t
+    
     term1
+    
     term-a
+    
     term-a1
 
 A couplet contains of left-hand side term and a right-hand side term, connected with an equal sign **=**. E.g.:
@@ -28,6 +31,11 @@ A couplet contains of left-hand side term and a right-hand side term, connected 
 A set consists of two or more terms, separated with a comma **,**:
 
     term-a, term-b
+
+The backslash **\** newline escape can be used to break up one line over two lines:
+
+    term-a, \
+    term-b
 
 ## Comments
 
@@ -173,9 +181,10 @@ The subject can left unspecified, which is called a _blank node_, using a hyphen
 
 meaning someone unspecified eats food.
 
-A triple itself can be part of another triple by stringing them together with spaces. Using a combination of triples with blank nodes we can combine them in creative ways, such as:
+A triple itself can be part of another triple by stringing them together with spaces, and broken up over multiple lines using the backslash **\** newline escape. Using a combination of triples with blank nodes we can combine them in creative ways, such as:
 
-    -.named.alice knows [-]
+    -.named.alice knows \
+      [-]
       named.bob
       who-knows -.named.eve
 
