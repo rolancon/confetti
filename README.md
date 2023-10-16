@@ -183,5 +183,7 @@ By replacing the hyphen with _someone_, and repeating the _[-]_, this reads as t
 
     Someone named Alice knows someone named Bob, (and someone) who knows someone named Eve.
 
+The inspiration for this functionality comes from a section in the [Turtle](https://www.w3.org/TR/turtle/#unlabeled-bnodes) manual - Turtle is a terse RDF triple language.
+
 ### Graph databases
 
