@@ -196,5 +196,59 @@ The inspiration for this functionality comes from a section in the [Turtle](http
 
 ### Graph databases
 
-Graph databases have many similarities with triple stores. They model relations between terms. But instead of only 3 (potentially nested) terms in a triple, they can be of arbitrary length. Furthermore, the terms (_nodes_ in graph terminology) can be annotated with a label or key-value pairs. Also, the paths between nodes (_edges_ in graph terminology) can be annotated with a label or key-value pairs. Lastly, the edges between the nodes can be either simple or directed.
+Graph databases have many similarities with triple stores. They model relations between terms. But instead of only 3 (potentially nested) terms in a triple, they can be of arbitrary length. Furthermore, the terms (_nodes_ in graph terminology) can be labeled or annotated with key-value pairs. Also, the paths between nodes (_edges_ in graph terminology) can be labeled or annotated with key-value pairs. Lastly, the edges between the nodes can be either simple or directed.
 
+A directed graph with three nodes, without labels and annotations, is very much like a triple:
+
+    a.b.c
+
+but they can go be extended beyond three nodes:
+
+    a.b.c.d
+
+The last node in a graph path can be labelled or annotated with a section header:
+A graph where the c node has a label:
+
+    [a.b.c]
+    label
+
+or an annotation for the c node:
+
+    [a.b.c]
+    key = value
+
+To anotate a node which is not the end node, add the path to the node to be annotated to a section header:
+
+    [a.b]
+    key-for-b = some-value
+
+If the above annotation appears in a Confetti file in addition to the previous annotation, then they are additive, meaning both b and c nodes will get an annotation. This process can be repeated for any node that needs a label or annotation.
+
+Annotations are part of a set (relation), therefore there can be more than one:
+
+    [a.b]
+    key-for-b = some-value
+    another-key-for-b = another-value
+
+Trees can also be constructed as graphs, just like in document stores:
+
+    [a.b]
+
+    [.c]
+    e = value1
+
+    [.d]
+    f = value2
+
+The difference with trees is that nodes in graphs can connect back to other nodes:
+
+    [a.b]
+    c.e
+    d.e
+
+Here nodes c and d branch off (as in a tree), but then connect back common node e.
+
+Nodes can also connect to themselves:
+
+    a.a
+    
