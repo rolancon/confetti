@@ -252,3 +252,30 @@ Nodes can also connect to themselves:
 
     a.a
     
+Next to directed edges, graphs also support simple edges (the nodes are connected without direction from one node to the other). These nodes are simply sets:
+
+a, b, c
+
+Adding a label or annotation to a set will cause all nodes to have the same label. I.e.,
+
+    [a, b, c]
+    label
+
+will result in:
+
+    a = label
+    b = label
+    c = label
+
+Since that is probably not what you intented, just add labels separately with a key-value pair, as shown above. Annotations are added with a section header:
+
+[a]
+key = value
+
+and also in this case, using multiple nodes as in a set will add the same annotation to all nodes:
+
+[a, b]
+key = value
+
+After this both nodes a and b have annotation key = value.
+
