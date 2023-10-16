@@ -305,3 +305,44 @@ To add a label or annotation to just one edge, only repeat that path in a separa
 
     [a\b]
     edge-label-a-b
+
+## Data formats
+
+### Configuration files
+
+Since the syntax of Confetti is directly derived from configuration files, the basic section headers and key-value pairs are equivalent to configs:
+
+    [config.path]
+    config-key = config-value
+    
+### CSV files
+
+CSV files are quite similar to tables in relational databases. The following example is derived from an earlier example in the relational databases section:
+
+    [csv-file,]
+    column1, column2
+    /
+    column1 = field-value-a
+    column2 = field-value-b
+    /
+    column1 = field-value-c
+    column2 = field-value-d
+
+which models a CSV file with a header column1, column2 and two rows with field values.
+
+Headerless CSV files have no column names and depend on order, mandated with slashes:
+
+    [csv-file,]
+    /
+    field-value-a/field-value-b
+    /
+    field-value-c/field-value-d
+
+The slashes between the field values cause them to be added as a list (couplets in a set, with an autoincrementing number for the left and the actual field value for the right).
+
+### Spreadsheets
+
+### XML
+
+### JSON
+
