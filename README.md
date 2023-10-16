@@ -443,17 +443,17 @@ The number is very similar to the JSON number type. A number can optionally have
     num = 5.8e-6
     num = -5.8e-6
 
-The string datatype can be denotated in four different ways. In all four cases whitespace in before and after the actual string is not included. 
+The string datatype can be denotated in four different ways. In all four cases whitespace before and after the actual string is not included. 
 It can be encoded as literal printable ASCII characters on a single line:
 
     str = These are just some lowercase and uppercase ASCII characters including number 1 and symbol #. 
 
-It can be split up over two different lines using the backslash **\** newline separator:
+It can be split up over two different lines using the backslash **\\** newline separator:
 
     str = This line is split between this line \
      and the next line.
 
-Unless the backslash is doubled, which counts as an escape:
+unless the backslash is doubled, which counts as an escape:
 
     str = This line is not split and the backslash is part of the string: \\
 
@@ -469,16 +469,16 @@ The whitespace at the start and end of the string that is within the quotes is i
 
 Several characters escaped with the backslash characters have special interpretation:
 
-   single-quote = '\''
-   backslash = '\\'
-   newline = '\n'
-   tab = '\t'
-   carriage-return = '\r'
-   vertical-tab = '\v'
-   formfeed = '\f'
-   ascii-control-character = '\x00'
-   non-ascii-unicode-character = '\uffff'
-   emoji-character = '\j10ffff'
+    single-quote = '\''
+    backslash = '\\'
+    newline = '\n'
+    tab = '\t'
+    carriage-return = '\r'
+    vertical-tab = '\v'
+    formfeed = '\f'
+    ascii-control-character = '\x00'
+    non-ascii-unicode-character = '\uffff'
+    emoji-character = '\j10ffff'
 
 A single newline separator cannot appear in the string, unless it is positioned immediately after the opening quote and followed by a newline, in that case the first newline is removed from the string:
 
@@ -492,8 +492,8 @@ and character escapes are interpreted literally in such strings (raw strings). T
 
 And for characters that could be interpreted as other datatypes, string interpretation can be enforced by doubling the equals sign **=**:
 
-   empty-str-not-null == 
-   str-not-bool == yes
+    empty-str-not-null == 
+    str-not-bool == yes
 
 A set in Confetti is multiple values separated by commas **,**:
 
