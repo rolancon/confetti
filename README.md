@@ -134,9 +134,9 @@ A _triple_ is a data structure which mimics a sentence consisting of a subject, 
 
 **we** is the subject, **eat** the predicate, and **food** is the object.
 
-In Confetti this looks like three terms combined with slashes **/**, which indicate the ordering from left to right:
+In Confetti this looks like three terms combined with dots **.**, which indicate the ordering from left to right:
 
-    we/eat/food
+    we.eat.food
 
 This triple could be decomposed in the following two couplets
 
@@ -145,7 +145,43 @@ This triple could be decomposed in the following two couplets
 
 but then the ordering disappears; still, it is not possible to construct a different triple since the only way they compose is through the predicate eat.
 
+Suppose we'd like to add another triple _We drink water_:
 
+    we.eat.food
+    we.drink.water
+
+This causes some reduplication with the subject. If in the future we might like to add more triples based on the same subject. In that case we can use the following shorthand:
+
+    [we]
+    eat.food
+    drink.water
+    
+The same principle applies if we have the same subject and predicate with different objects:
+
+    we.eat.fruit
+    we.eat.candy
+
+This can be more consisely expressed as:
+
+    [we.eat]
+    fruit
+    candy
+    
+The subject can left unspecified, which is called a _blank node_, using a hyphen **-** as placeholder:
+
+    -.eats.food
+
+meaning someone unspecified eats food.
+
+A triple itself can be part of another triple by stringing them together with spaces. Using a combination of triples with blank nodes we can combine them in creative ways, such as:
+
+    -.named.alice knows [-]
+    named.bob
+    who-knows -.named.eve
+
+By replacing the hyphen with _someone_, and repeating the _[-]_, this reads as the following sentence:
+
+    Someone named Alice knows someone named Bob, (and someone) who knows someone named Eve.
 
 ### Graph databases
 
