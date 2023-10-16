@@ -104,11 +104,11 @@ Relational databases extend further on document stores. There are multiple relat
 
 The table header ends with a comma **,** to indicate that this is a separate set (a clan in Data Algebra terminology). The _/_ operator automatically increases a counter, and uses this in a new couplet, where the counter is the key, and relation is the value. So the first relation would then be identical to:
 
-    [.1]
+    [1]
     key1 = value-a
     key2 = value-b
 
-the second one would have a new section header _[.2]_, etc. These numbers are not supported for explicit, external term names (see section Terms), they are considered implicit, internal term names.
+the second one would have a new section header _[2]_, etc. These numbers are not supported for explicit, external term names (see section Terms), they are considered implicit, internal term names.
 
 There are no _null_ values in set theory, therefore if a field value is _null_ in one of the relations, then just leave it out. Suppose _value-c_ of _key1_ is _null_ in the second row:
 
@@ -123,7 +123,7 @@ A table could optionally also contain a separate schema, which is a set of all t
 
 Internally the schema is stored under number 0:
 
-    [.0]
+    [0]
     key1, key2
 
 In order to add more than one table just add more table headers:
@@ -347,10 +347,10 @@ Spreadsheets have some similarities with CSV files with a header. The fields in 
     [spreadheet-tab,]
     /
     aa = some-amount
-    ac = cell-value-ac
+    ac = cell-value-ac1
     /
     aa = some-other-amount
-    ac = cell-value-ac
+    ac = cell-value-ac2
     /
     /
     aa = total
@@ -359,6 +359,17 @@ Spreadsheets have some similarities with CSV files with a header. The fields in 
 The aa columnn contains the labels: two rows with names in their cells, labelling the column next to it (ac) as containing different amounts. As you can see from the naming, the second column, ab, has been skipped. The third row is skipped, and the fourth row shows that the cell value in column ac contains the total: the sum of the two cell values of the first two two rows in the same column.
     
 ### XML
+
+The hierarchical structure of XML, consisting of nested _tags_ and the possibility of _attributes_ (with or without value) on tags can be modelled straightforward way in Confetti. Text in a tag can only be modelled if it's contained in a leave node, not in the case of mixed nodes (nodes containinig a mix of nodes and text):
+
+    [xml-file,]
+    [outer-tag]
+    attribute1 = 
+    attribute2 = value
+    [.inner-tag]
+    text
+
+The outer tag contains two attributes, one empty and the other with a value, the inner tag (nested inside the outer tag) contains only text.
 
 ### JSON
 
