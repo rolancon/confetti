@@ -10,11 +10,11 @@ These four data structures can generically model many different types of data st
 
 ## Terms
 
-A single term is called an _atom_. 
+A single _term_ is called an _atom_. 
 
     term
 
-The naming convention for a term is as follows: a base term should start with a lower-case letter [a-z], potentially followed by one ore more lower case letters or digits [0-9]. More than one base term can be combined into a compound term with a hyphen **-**. Examples of terms:
+The naming convention for a term is as follows: a _base term_ should start with a lower-case letter [a-z], potentially followed by one ore more lower case letters or digits [0-9]. More than one base term can be combined into a _compound term_ with a hyphen **-**. Examples of terms:
 
     t
     term1
@@ -46,13 +46,25 @@ Together these couplets form a set (a set containing couplets is called a relati
 
 ### Document stores
 
-Document stores have more deeply nested structures. To support them use a section header: a section header consists of a pair of square brackets (_[ ]_). In between the square brackets you specific the path from one key to the next key, separated by dots (_._). Under the section header you specify the key-value that is nested in the key path.
+Document stores have more deeply nested structures. To support them use a _section header_: a section header consists of a pair of square brackets (_[ ]_). In between the square brackets you specific the path from one key to the next key, separated by dots **.**. Under the section header you specify the key-value that is nested in the key path.
 
     [key1.key2]
     key3 = value-a
     key4 = value-b
 
 So in the above section, we actually have two separate paths: _key1.key2.key3_ and _key1.key2.key4_. These paths are actually nested couplets, from one key (_key1_) to the next one (_key2_) which functions as its value, but also as the key for the next couplet (_key2.key3_). The final couplet is then a regular key-value pair.
+
+To model _trees_ in the data, which consists of a root nodes, nested nodes and terminal leaves, use a relative path in a subsidiary section header below the main section header. The subsidiary section header starts with a dot **.** to indicate this is a relative path to the previous absolute path. For example, to turn key3 and key4 in the previous example in sibling nodes from root key1.key2 containing their own nodes:
+
+    [key1.key2]
+
+    [.key3]
+    key5 = value-a
+
+    [.key4]
+    key6 = value-b
+
+In this example, the root is key1, which is extended with key2, together forming the absolute path key1.key2, which then branches into nodes key3 and key4, indicated with a relative path, which both contains their own nodes (resp. key5 and key6) and terminal leaves (resp. value-a and value-b).
 
 ### Relational databases
 
