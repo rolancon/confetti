@@ -32,7 +32,7 @@ A set consists of two or more terms, separated with a comma **,**:
 
     term-a, term-b
 
-The backslash **\** newline escape can be used to break up one line over two lines:
+The backslash **\\** newline escape can be used to break up one line over two lines:
 
     term-a, \
     term-b
@@ -181,12 +181,12 @@ The subject can left unspecified, which is called a _blank node_, using a hyphen
 
 meaning someone unspecified eats food.
 
-A triple itself can be part of another triple by stringing them together with spaces, and broken up over multiple lines using the backslash **\** newline escape. Using a combination of triples with blank nodes we can combine them in creative ways, such as:
+A triple itself can be part of another triple by stringing them together with spaces, and broken up over multiple lines using the backslash **\\** newline escape. Using a combination of triples with blank nodes we can combine them in creative ways, such as:
 
     -.named.alice knows \
-      [-]
-      named.bob
-      who-knows -.named.eve
+     [-]
+     named.bob
+     who-knows -.named.eve
 
 By replacing the hyphen with _someone_, and repeating the _[-]_, this reads as the following sentence:
 
@@ -195,4 +195,6 @@ By replacing the hyphen with _someone_, and repeating the _[-]_, this reads as t
 The inspiration for this functionality comes from a section in the [Turtle](https://www.w3.org/TR/turtle/#unlabeled-bnodes) manual - Turtle is a terse RDF triple language.
 
 ### Graph databases
+
+Graph databases have many similarities with triple stores. They model relations between terms. But instead of only 3 (potentially nested) terms in a triple, they can be of arbitrary length. Furthermore, the terms (_nodes_ in graph terminology) can be annotated with a label or key-value pairs. Also, the paths between nodes (_edges_ in graph terminology) can be annotated with a label or key-value pairs. Lastly, the edges between the nodes can be either simple or directed.
 
