@@ -254,7 +254,7 @@ Nodes can also connect to themselves:
     
 Next to directed edges, graphs also support simple edges (the nodes are connected without direction from one node to the other). These nodes are simply sets:
 
-a, b, c
+    a, b, c
 
 Adding a label or annotation to a set will cause all nodes to have the same label. I.e.,
 
@@ -269,13 +269,39 @@ will result in:
 
 Since that is probably not what you intented, just add labels separately with a key-value pair, as shown above. Annotations are added with a section header:
 
-[a]
-key = value
+    [a]
+    key = value
 
 and also in this case, using multiple nodes as in a set will add the same annotation to all nodes:
 
-[a, b]
-key = value
+    [a, b]
+    key = value
 
 After this both nodes a and b have annotation key = value.
 
+Edges can also get labels or annotations. For directed graphs, use the following syntax:
+
+    [a/b]
+    edge-label
+
+The slash **/** indicates that the set operations should be done on the edge, not on the nodes. Again, like with nodes, labels or annotations on a directed graph are only added to the final edge:
+
+    [a/b/c]
+    edge-key = value
+
+will only add the annotation to the final edge between nodes b and c. To add one on the first edge between nodes a and b, repeat the path in another section header:
+
+    [a/b]
+    edge-key-a-b = value
+
+Adding labels and annotations to a simple graph uses the following syntax:
+
+    [a\b\c]
+    edge-key = value
+
+which adds the annotation to both edges: from a to b, and from b to c.
+
+To add a label or annotation to just one edge, only repeat that path in a separate section header:
+
+    [a\b]
+    edge-label-a-b
