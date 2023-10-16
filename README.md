@@ -91,6 +91,17 @@ There are no _null_ values in set theory, therefore if a field value is _null_ i
     /
     key2 = value-d
 
+A table could optionally also contain a separate schema, which is a set of all the columns used in the relations:
+
+    [table1,]
+    key1, key2
+    /
+
+Internally the schema is stored under number 0:
+
+    [.0]
+    key1, key2
+
 In order to add more than one table just add more table headers:
 
     [table1,]
