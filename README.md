@@ -449,7 +449,7 @@ The string datatype can be denotated in several different ways. In all cases whi
 
 It can be encoded as literal printable ASCII characters on a single line:
   
-    str = this is 1 line with numbers, letters and symbols
+    str = this is 1 line with: numbers, letters and 2 symbols
 
 The syntax of the string datatype is extended to support the character set of Minicode, which means uppercase letters and shifted symbols from the keyboard are also allowed in a value:
 
