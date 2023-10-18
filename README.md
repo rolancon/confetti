@@ -8,6 +8,8 @@ The basic data structure is a Couplet. This is very similar to a key-value pair,
 
 These four data structures can generically model many different types of data stores and data formats, e.g.: key-value stores, document stores, relational databases, RDF triple stores, graph databases, configuration files, CSV files, spreadsheets, XML, JSON. The syntax to model these sets and couplets is derived from [configuration files](https://github.com/madmurphy/libconfini/blob/master/MANUAL.md), also known as [INI files](https://en.wikipedia.org/wiki/INI_file) on Windows.
 
+The syntax of Confetti for data structures is limited to the character set of [Lazycode](https://github.com/rolancon/lazycode-minicode).
+
 ## Terms
 
 A single _term_ is called an _atom_. 
@@ -443,10 +445,15 @@ The number is very similar to the JSON number type. A number can optionally have
     num = 5.8e-6
     num = -5.8e-6
 
-The string datatype can be denotated in four different ways. In all four cases whitespace before and after the actual string is not included. 
-It can be encoded as literal printable ASCII characters on a single line:
+The string datatype can be denotated in several different ways. In all cases whitespace before and after the actual string is not included. 
 
-    str = These are just some lowercase and uppercase ASCII characters including number 1 and symbol #. 
+It can be encoded as literal printable ASCII characters on a single line:
+  
+    str = this is 1 line with numbers, letters and symbols
+
+The syntax of the string datatype is extended to support the character set of Minicode, which means uppercase letters and shifted symbols from the keyboard are also allowed in a value:
+
+    str = These are just some lowercase and uppercase ASCII characters including number 1.1 and shifted symbol #. 
 
 It can be split up over two different lines using the backslash **\\** newline separator:
 
