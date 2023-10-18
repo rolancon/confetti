@@ -8,7 +8,7 @@ The basic data structure is a Couplet. This is very similar to a key-value pair,
 
 These four data structures can generically model many different types of data stores and data formats, e.g.: key-value stores, document stores, relational databases, RDF triple stores, graph databases, configuration files, CSV files, spreadsheets, XML, JSON. The syntax to model these sets and couplets is derived from [configuration files](https://github.com/madmurphy/libconfini/blob/master/MANUAL.md), also known as [INI files](https://en.wikipedia.org/wiki/INI_file) on Windows.
 
-The syntax of Confetti for data structures is limited to the character set of [Lazycode](https://github.com/rolancon/lazycode-minicode).
+The syntax of Confetti for data structures is limited to the character set and whitespace rules of [Lazycode](https://github.com/rolancon/lazycode-minicode).
 
 ## Terms
 
