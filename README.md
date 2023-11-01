@@ -56,7 +56,7 @@ In this example, the root is key1, which is extended with key2, together forming
 
 ### Relational databases
 
-Relational databases extend further on document stores. There are multiple relations (often called records or rows). The relations have similar keys (known as columns), but different values (or fields). The relations are also are numbered incrementally.  This can be achieved automatically as follows:
+Relational databases extend further on document stores. There are multiple tuples (often called relations, records or rows). The tuples have similar keys (known as columns), but different values (or fields). The tuples are also are numbered incrementally.  This can be achieved automatically as follows:
 
     [table,]
     /
@@ -66,7 +66,7 @@ Relational databases extend further on document stores. There are multiple relat
     key1 = value-c
     key2 = value-d
 
-The table header ends with a comma **,** to indicate that this is a separate set (a clan in Data Algebra terminology). The _/_ operator automatically increases a counter, and uses this in a new pair, where the counter is the key, and relation is the value. So the first relation would then be identical to:
+The table header ends with a comma **,** to indicate that this is a separate set (a clan in Data Algebra terminology). The _/_ operator automatically increases a counter, and uses this in a new pair, where the counter is the key, and the tuple is the value. So the first tuple would then be identical to:
 
     [1]
     key1 = value-a
@@ -74,12 +74,12 @@ The table header ends with a comma **,** to indicate that this is a separate set
 
 the second one would have a new section header _[2]_, etc. These numbers are not supported for explicit, external term names (see section Terms), they are considered implicit, internal term names.
 
-There are no _null_ values in set theory, therefore if a field value is _null_ in one of the relations, then just leave it out. Suppose _value-c_ of _key1_ is _null_ in the second row:
+There are no _null_ values in set theory, therefore if a field value is _null_ in one of the tuples, then just leave it out. Suppose _value-c_ of _key1_ is _null_ in the second row:
 
     /
     key2 = value-d
 
-A table could optionally also contain a separate schema, which is a set of all the columns used in the relations:
+A table could optionally also contain a separate schema, which is a set of all the columns used in the tuples:
 
     [table1,]
     key1, key2
@@ -188,7 +188,7 @@ To anotate a node which is not the end node, add the path to the node to be anno
 
 If the above annotation appears in a Confetti file in addition to the previous annotation, then they are additive, meaning both b and c nodes will get an annotation. This process can be repeated for any node that needs a label or annotation.
 
-Annotations are part of a set (relation), therefore there can be more than one:
+Annotations are part of a set (tuples), therefore there can be more than one:
 
     [a.b]
     key-for-b = some-value
