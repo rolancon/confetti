@@ -480,3 +480,23 @@ The tags are all one-letter abbreviations of the types that K-V and Confetti sup
 A term which is of type number would then become:
 
     term'n
+
+Another form of tagging is for compound terms. They can be tagged with the type of grammar they denote, and are named after the file extensions of file formats that represent these types of grammar:
+
+    SQL = sql
+    RDF = rdf
+    Turtle = rdf-turtle
+    JSON-LD = rdf-jsonld
+    GML = gml ;Graph Modelling Language    
+    XML = xml
+    CSV = xsv
+    JSON = json
+
+The XML example from the XML section could then be tagged as follows:
+
+    [doc'xml,]
+    [outer-tag]
+    attribute1 = 
+    attribute2 = value
+     [.inner-tag]
+     text
