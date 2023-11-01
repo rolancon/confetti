@@ -142,23 +142,29 @@ This can be more consisely expressed as:
     [we.eat]
     fruit
     candy
-    
+
+Basically the object becomes a collection. The object can also be an empty collection (nil in RDF). This can be expressed by leaving out the collection:
+
+   [we.eat]
+
 The subject can left unspecified, which is called a _blank node_, using a hyphen **-** as placeholder:
 
     -.eats.food
 
 meaning someone unspecified eats food.
 
-A triple itself can be part of another triple by stringing them together with spaces, and broken up over multiple lines using the backslash **\\** newline escape. Using a combination of triples with blank nodes we can combine them in creative ways, such as:
+A triple itself can be part of another triple by stringing them together with dots (preferable separated by spaces), or by breaking them up over multiple lines using the backslash **\\** newline escape and a section header, below which triples are strung together with slashes on separate lines. Using a combination of triples with blank nodes we can combine them in creative ways, such as:
 
-    -.named.alice knows \
+    -.named.alice . knows . \
      [-]
+     /
      named.bob
-     who-knows -.named.eve
+     /
+     who-knows . -.named.eve
 
 By replacing the hyphen with _someone_, and repeating the _[-]_, this reads as the following sentence:
 
-    Someone named Alice knows someone named Bob, (and someone) who knows someone named Eve.
+    Someone named Alice knows someone named Bob, and someone who knows someone named Eve.
 
 The inspiration for this functionality comes from a section in the [Turtle](https://www.w3.org/TR/turtle/#unlabeled-bnodes) manual - Turtle is a terse RDF triple language.
 
