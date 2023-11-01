@@ -10,17 +10,35 @@ These four data structures can generically model many different types of data st
 
 Just as in K-V, the syntax of Confetti for data structures is limited to the character set and [whitespace rules](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#whitespace) of [Lazycode](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#lazycode), the syntax of values is extended to the character set of [Minicode](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#minicode).
 
-## Data stores
+## Basics
+
+### Configuration files
+
+Since the syntax of Confetti is directly derived from configuration files, the basic section headers and key-value pairs are equivalent to configs:
+
+    [config]
+    key = value
+
+This means that key _key_ with value _value_ is part of _config_, i.e., there is a path _config.key_ which leads to the value. The path is actually a syntactic convenience for a combination of these two different pairs:
+
+    config = key
+    key = value
+
+This is even more convenient when you need to store multiple pairs under the same config, so you don't need to keep repeating the path from config to its keys:
+
+    [config]
+    key1 = value1
+    key2 = value2
 
 ### Document stores
 
-Document stores have more deeply nested structures. To support them use a _section header_: a section header consists of a pair of square brackets **[ ]**. In between the square brackets you specific the _path_ from one key to the next key, separated by dots **.**. Under the section header you specify the key-value that is nested in the key path.
+Document stores have more deeply nested structures. To support them use a _section header_ like in a configuration file: a section header consists of a pair of square brackets **[ ]**. In between the square brackets you specific the _path_ from one key to the next key, separated by dots **.**. Under the section header you specify the pairs that are nested in the key path:
 
     [key1.key2]
     key3 = value-a
     key4 = value-b
 
-So in the above section, we actually have two separate paths: _key1.key2.key3_ and _key1.key2.key4_. These paths are actually nested couplets, from one key (_key1_) to the next one (_key2_) which functions as its value, but also as the key for the next couplet (_key2.key3_). The final couplet is then a regular key-value pair.
+So in the above section, we actually have two separate paths: _key1.key2.key3_ and _key1.key2.key4_. These paths are actually nested pairs, from one key (_key1_) to the next one (_key2_) which functions as its value, but also as the key for the next pair (_key2.key3_). The final pair is then a regular key-value pair.
 
 To model _trees_ in the data, which consists of a root nodes, nested nodes and terminal leaves, use a relative path in a subsidiary section header below the main section header. The subsidiary section header starts with a dot **.** to indicate this is a relative path to the previous absolute path. For example, to turn key3 and key4 in the previous example into sibling nodes from root key1.key2 containing their own nodes:
 
@@ -34,6 +52,8 @@ To model _trees_ in the data, which consists of a root nodes, nested nodes and t
 
 In this example, the root is key1, which is extended with key2, together forming the absolute path key1.key2, which then branches into sibling nodes key3 and key4, indicated with a relative path, which both contains their own nodes (resp. key5 and key6) and terminal leaves (resp. value-a and value-b). So, key2 is the parent of keys key3 and key4, key1 is their ancestor, and vice versa, key3 and key4 are children to key2, and descendants of key1. 
 
+## Data stores
+
 ### Relational databases
 
 Relational databases extend further on document stores. There are multiple relations (often called records or rows). The relations have similar keys (known as columns), but different values (or fields). The relations are also are numbered incrementally.  This can be achieved automatically as follows:
@@ -46,7 +66,7 @@ Relational databases extend further on document stores. There are multiple relat
     key1 = value-c
     key2 = value-d
 
-The table header ends with a comma **,** to indicate that this is a separate set (a clan in Data Algebra terminology). The _/_ operator automatically increases a counter, and uses this in a new couplet, where the counter is the key, and relation is the value. So the first relation would then be identical to:
+The table header ends with a comma **,** to indicate that this is a separate set (a clan in Data Algebra terminology). The _/_ operator automatically increases a counter, and uses this in a new pair, where the counter is the key, and relation is the value. So the first relation would then be identical to:
 
     [1]
     key1 = value-a
@@ -90,7 +110,7 @@ In Confetti this looks like three terms combined with dots **.**, which indicate
 
     we.eat.food
 
-This triple could be decomposed in the following two couplets
+This triple could be decomposed in the following two pairs
 
     we = eat
     eat = food
@@ -251,13 +271,6 @@ To add a label or annotation to just one edge, only repeat that path in a separa
     edge-label-a-b
 
 ## Data formats
-
-### Configuration files
-
-Since the syntax of Confetti is directly derived from configuration files, the basic section headers and key-value pairs are equivalent to configs:
-
-    [config.path]
-    config-key = config-value
     
 ### CSV files
 
@@ -282,7 +295,7 @@ Headerless CSV files have no column names and depend on order, mandated with sla
     /
     field-value-c/field-value-d
 
-The slashes between the field values cause them to be added as a list (couplets in a set, with an autoincrementing number for the left and the actual field value for the right).
+The slashes between the field values cause them to be added as a list (pairs in a set, with an autoincrementing number for the left and the actual field value for the right).
 
 ### Spreadsheets
 
@@ -317,13 +330,13 @@ The outer tag contains two attributes, one empty and the other with a value, the
 
 ### JSON
 
-JSON has two scalar data types: _objects_ and _arrays_. Objects are similar to trees, a collection of nested couplets, as modelled in document stores and graphs. The toplevel, however, can contain more than one node. An example of an object with one toplevel pair (a root):
+JSON has two scalar data types: _objects_ and _arrays_. Objects are similar to trees, a collection of nested pairs, as modelled in document stores and graphs. The toplevel, however, can contain more than one node. An example of an object with one toplevel pair (a root):
 
     [object-root]
     object-child1 = value1
     object-child2 = value2
 
-An example of an object containing two toplevel couplets:
+An example of an object containing two toplevel pairs:
 
     [object-root1, object-root2]
     
@@ -335,7 +348,7 @@ An example of an object containing two toplevel couplets:
      object-child3 = value3
      object-child4 = value4
 
-Confetti does not have a direct equivalent for arrays, which are ordered, indexed lists. A list nested at most one level deep can be modelled similar to CSV files without a header, with autogenerated numbers for the left-hand side of couplets, where the list values are then on the right. A single list looks like:
+Confetti does not have a direct equivalent for arrays, which are ordered, indexed lists. A list nested at most one level deep can be modelled similar to CSV files without a header, with autogenerated numbers for the left-hand side of pairs, where the list values are then on the right. A single list looks like:
 
     list-value1/list-value2
 
