@@ -359,4 +359,24 @@ and a list nested one level deep looks like:
     /
     list-value3/list-value4
 
-For the support for JSON's datatypes, see the [Types](https://github.com/rolancon/key-value/blob/main/README.md#types) section in K-V.
+## Types
+
+For the support for JSON's atomic datatypes, see the [Types](https://github.com/rolancon/key-value/blob/main/README.md#types) section in K-V.
+
+A set in Confetti is multiple values separated by commas **,**:
+
+    set = a, b, c
+
+A list in Confetti is multiple values separated by slashes **/**:
+
+    list = a/b/c
+    
+Moreover, Confetti has special notations for an empty set
+
+    empty-set = ,
+    
+and an empty list
+
+    empty-list = /
+
+which reuse the separators of sets and lists.
