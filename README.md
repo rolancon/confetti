@@ -38,30 +38,30 @@ This is even more convenient when you need to store multiple pairs under the sam
 
 Pairs that are part of the root set (not nested under a section header) are considered global values, otherwise they are local values. It is possible to refer from a local value to a global value. This can be useful for a number of reasons. One is that you would like to use more commonly known terms for the operators that implement the false and true values:
 
-false = -
-true == --
+    false = -
+    true == --
 
-[section-header]
-local-bool == false
+    [section-header]
+    local-bool == false
 
 The double equals sign **==** forces the parser/interpreter to eagerly evaluate the local value. If the value is a term, it will do a lookup in the global key-value space (which has been parsed first). In this case it will find that _false = -_, and then replace _local-bool_'s value with _-_. In other words, after the parse it has interpreted this section as:
 
-[section-header]
-local-bool = -
+    [section-header]
+    local-bool = -
 
 with one equals sign as usual.
 
 If the local value is empty, or it is not a valid term, or the global term does not exist, then this will result in the null operator:
 
-[section-header]
-local-key == 
-local-key == True
-local-key == null
+    [section-header]
+    local-key == 
+    local-key == True
+    local-key == null
 
 These will all result in:
 
-[section-header]
-local-key = []
+    [section-header]
+    local-key = []
 
 Note that an empty value behind one equals sign results in an empty string (_''_), whereas an empty value behind two equals signs results in the null operator (_[]_).
 
