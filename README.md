@@ -451,3 +451,32 @@ which reuse the separators of sets, maps and lists.
 An empty pair can only be denoted in the context of an empty map where 'the pair is empty': **.**.
 
 Empty tuples, clans and hordes, since they are also sets, are also denoted as an empty set: **,**.
+
+### Type tags
+
+Confetti supports tagging terms with types. Tagging is done using the single quote character **'** to append the tag to the term:
+
+    term'type
+
+The tags are all one-letter abbreviations of the types that K-V and Confetti support:
+
+    atom = a
+    boolean = b
+    number = n
+    integer = i
+    real = r
+    character = d ;MinicoDe character / coDepoint
+    empty = y ;emptY
+    string = s
+    compound = o ;cOmpOund
+    pair = p
+    set = e ;sEt
+    list = l
+    map = m
+    tuple = t
+    clan = c
+    horde = h
+
+A term which is of type number would then become:
+
+    term'n
