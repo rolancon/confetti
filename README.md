@@ -51,12 +51,11 @@ The double equals sign **==** forces the parser/interpreter to eagerly evaluate 
 
 with one equals sign as usual.
 
-If the local value is empty, or it is not a valid term, or the global term does not exist, then this will result in the null operator:
+If the local value is empty, or the global term does not exist, then this will result in the null operator:
 
     [section-header]
     local-key == 
-    local-key == True
-    local-key == null
+    local-key == tru
 
 These will all result in:
 
