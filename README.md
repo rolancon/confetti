@@ -371,24 +371,49 @@ and a list nested one level deep looks like:
 
 ## Types
 
-Whereas K-V only supports pairs in one set (a tuple), with the atomic data types (boolean, number, string and empty), Confetti also support other compound data types: paths, multiple sets and tuples, lists, clans and hordes, plus their empty type.
+Whereas K-V only supports pairs in one set (a tuple), with the atomic data types (boolean, number, Minicode character and empty) and one compound data type (string), Confetti also supports other compound data types: multiple sets and levels of sets (tuples, clans and hordes), maps (as a syntactic path notation for nested pairs), lists, plus their empty type.
 
 For the support for atomic datatypes, see the [Types](https://github.com/rolancon/key-value/blob/main/README.md#types) section in K-V.
+
+Clans (sets of tuples) are multiple section headers with separate sets:
+    [set1,]
+
+    [set2,]
+
+Multiple sets with nested tuples (sets of pairs) are supported using section headers with bodies:
+
+    [set1,]
+    tuple1-key1=value-a
+    tuple1-key2=value-b
+
+    [set2,]
+    tuple1-key1=value-c
+    tuple1-key2=value-d
+
+Hordes (sets of clans) are not directly expressed in Confetti, but are supported through multiple files in the same directory, where each file is a separate horde containing its own clans. The filename is then the name of the horde, and should therefore conform to the [terms naming convention](https://github.com/rolancon/key-value/tree/main#terms) as explained in K-V.
 
 A set in Confetti is multiple values separated by commas **,**:
 
     set = a, b, c
 
+A map is multiple values separated by dots **.**:
+
+    map = a.b.c
+
 A list in Confetti is multiple values separated by slashes **/**:
 
     list = a/b/c
-    
+
 Moreover, Confetti has special notations for an empty set
 
     empty-set = ,
+
+and an empty map
+
+    empty-list = .
     
 and an empty list
 
     empty-list = /
 
-which reuse the separators of sets and lists.
+which reuse the separators of sets, maps and lists.
