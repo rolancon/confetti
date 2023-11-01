@@ -417,4 +417,5 @@ and an empty list
     empty-list = /
 
 which reuse the separators of sets, maps and lists.
-Empty tuples, clans and hordes, since they are also sets, are also denoted as an empty set: **,**.
+
+An empty pair can only be denoted in the context of an empty map where 'the pair is empty': **.**. Empty tuples, clans and hordes, since they are also sets, are also denoted as an empty set: **,**.
