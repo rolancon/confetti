@@ -1,6 +1,5 @@
 # Confetti
-Confetti is a generic data description language with semantics based on data algebra and a syntax derived from configuration files.
-The file extension for Confetti files is _.cft_.
+Confetti is a generic data description language with semantics based on data algebra and a syntax derived from configuration files. Confetti is an extension of the [K-V](https://github.com/rolancon/key-value) data format. The file extension for Confetti files is _.cft_.
 
 The data structures in Confetti mirror those found in [Data Algebra](https://algebraixlib.readthedocs.io/en/latest/intro.html), which is based entirely on [Zermelo-Fraenkel set theory with the axiom of choice (ZFC)](https://en.wikipedia.org/wiki/Zermelo-Fraenkel_set_theory).
 
