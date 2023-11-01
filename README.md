@@ -12,6 +12,10 @@ Just as in K-V, the syntax of Confetti for data structures is limited to the cha
 
 ## Basics
 
+A set consists of two or more terms, separated with a comma **,**:
+
+    term-a, term-b
+
 ### Configuration files
 
 Since the syntax of Confetti is directly derived from configuration files, the basic section headers and key-value pairs are equivalent to configs:
