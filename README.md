@@ -361,7 +361,9 @@ and a list nested one level deep looks like:
 
 ## Types
 
-For the support for JSON's atomic datatypes, see the [Types](https://github.com/rolancon/key-value/blob/main/README.md#types) section in K-V.
+Whereas K-V only supports pairs in one set (a tuple), with the atomic data types (boolean, number, string and empty), Confetti also support other compound data types: paths, multiple sets and tuples, lists, clans and hordes, plus their empty type.
+
+For the support for atomic datatypes, see the [Types](https://github.com/rolancon/key-value/blob/main/README.md#types) section in K-V.
 
 A set in Confetti is multiple values separated by commas **,**:
 
