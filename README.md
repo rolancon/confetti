@@ -458,7 +458,7 @@ Confetti supports tagging terms with types. Tagging is done using the single quo
 
     term'type
 
-The tags are all one-letter abbreviations of the types that K-V and Confetti support:
+The tags are one-letter abbreviations of all the types that K-V and Confetti support:
 
     type = y ;tYpe
     empty = e
@@ -467,9 +467,11 @@ The tags are all one-letter abbreviations of the types that K-V and Confetti sup
     boolean = b
     number = n
     integer = i
+    fraction = f
     real = r
     character = d ;minicoDe character
     compound = o ;cOmpOund
+    character-range = j ;range ranJe
     string = v ; Varchar
     pair = p
     set = s
@@ -479,28 +481,27 @@ The tags are all one-letter abbreviations of the types that K-V and Confetti sup
     clan = c
     horde = h
 
-    fraction = f
-    character-range = j ;range ranJe
+    ;reserved type tags
     unicode-codepoint = u
     unicode-text = x ;unicode teXt
     date = g ;GreGorian date
     time = k ; clocKtime
     timezone = z ;timeZone
-    blob = q ;?
+    binary-blob = q ;?
     
 A term which is of type number would then become:
 
     term'n
 
-Another form of tagging is for compound terms. They can be tagged with the type of grammar they denote, and are named after the file extensions of file formats that represent these types of grammar:
+Another form of tagging is for certain compound terms. They can be tagged with the type of grammar they denote, and are named after the file extensions of file formats that represent these types of grammar:
 
     SQL = sql
-    RDF = rdf
+    RDF = rdf-xml
     Turtle = rdf-turtle
     JSON-LD = rdf-jsonld
     GML = gml ;Graph Modelling Language    
-    XML = xml
     CSV = xsv
+    XML = xml
     JSON = json
 
 The XML example from the XML section could then be tagged as follows:
