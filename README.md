@@ -177,7 +177,7 @@ Basically the object becomes a collection. The object can also be an empty colle
 
    [we.eat]
 
-The subject can left unspecified, which is called a _blank node_, using a hyphen **-** as placeholder:
+The subject can left unspecified, which is called a _blank node_, using an anonymous term (denoted as a hyphen **-**) as placeholder:
 
     -.eats.food
 
