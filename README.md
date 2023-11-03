@@ -460,8 +460,8 @@ Confetti supports tagging terms with types. Tagging is done using the single quo
 
 The tags are one-letter abbreviations of all the types that K-V and Confetti support:
 
-    type = y ;tYpe
     empty = e
+    type = y ;non-empty tYpe
     atom = a
     term = w ;Word
     boolean = b
