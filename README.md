@@ -487,7 +487,7 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
     date = g ;GreGorian date
     time = k ; clocKtime
     timezone = z ;timeZone
-    binary-blob = q ;?
+    binary-blob? = q ;?
     
 A term which is of type number would then become:
 
