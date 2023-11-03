@@ -183,13 +183,11 @@ The subject can left unspecified, which is called a _blank node_, using a hyphen
 
 meaning someone unspecified eats food.
 
-A triple itself can be part of another triple by stringing them together with dots (preferable separated by spaces), or by breaking them up over multiple lines using the backslash **\\** newline escape and a section header, below which triples are strung together with slashes on separate lines. Using a combination of triples with blank nodes we can combine them in creative ways, such as:
+A triple itself can be part of another triple by stringing them together with dots (preferable separated by spaces), or by breaking them up over multiple lines using the backslash **\\** newline escape and a section header, below which triples are formed reusing the subject in the section header. Using a combination of triples with blank nodes we can combine them in creative ways, such as:
 
     -.named.alice . knows . \
      [-]
-     /
      named.bob
-     /
      who-knows . -.named.eve
 
 By replacing the hyphen with _someone_, and repeating the _[-]_, this reads as the following sentence:
