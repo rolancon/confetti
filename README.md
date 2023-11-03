@@ -51,6 +51,8 @@ The double equals sign **==** forces the parser/interpreter to eagerly evaluate 
 
 with one equals sign as usual.
 
+Note that you cannot refer to an anonymous (unnamed) term, only to named terms.
+
 If the local value is empty, or the global term does not exist, then this will result in the null operator:
 
     [section-header]
