@@ -472,7 +472,7 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
     character = d ;minicoDe character
     compound = o ;cOmpOund
     character-range = j ;range ranJe
-    string = v ; Varchar
+    string = v ; sql Varchar
     pair = p
     set = s
     map = m
@@ -480,14 +480,14 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
     tuple = t
     clan = c
     horde = h
+    table = q ;sQuare
 
     ;reserved type tags
     unicode-codepoint = u
     unicode-text = x ;unicode teXt
     date = g ;GreGorian date
     time = k ; clocKtime
-    timezone = z ;timeZone
-    binary-blob? = q ;?
+    timezone-offset = z ;timeZone
     
 A term which is of type number would then become:
 
