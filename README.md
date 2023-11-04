@@ -421,11 +421,11 @@ Multiple sets with nested tuples (sets of pairs) are supported using section hea
 
 Hordes are sets which contains clans. They are denoted with double square bracket operators _[[]]_, and can contain nested clans:
 
-   [[horde-a]]
+    [[horde-a]]
    
-   [[horde-b]]
-   [clan-a]
-   [clan-b]
+    [[horde-b]]
+    [clan-a]
+    [clan-b]
 
 A set in Confetti is multiple values separated by commas **,**:
 
