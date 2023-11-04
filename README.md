@@ -12,10 +12,6 @@ Just as in K-V, the syntax of Confetti for data structures is limited to the cha
 
 ## Basics
 
-A set consists of two or more terms, separated with a comma **,**:
-
-    term-a, term-b
-
 ### Configuration files
 
 Since the syntax of Confetti is directly derived from configuration files, the basic section headers and key-value pairs are equivalent to configs:
@@ -33,6 +29,8 @@ This is even more convenient when you need to store multiple pairs under the sam
     [config]
     key1 = value1
     key2 = value2
+
+The combinations of pairs constitutes a set and is called a tuple.
 
 ### Global and local values
 
@@ -87,7 +85,7 @@ To model _trees_ in the data, which consists of a root nodes, nested nodes and t
     key6 = value-b
 
 In this example, the root is key1, which is extended with key2, together forming the absolute path key1.key2, which then branches into sibling nodes key3 and key4, indicated with a relative path, which both contains their own nodes (resp. key5 and key6) and terminal leaves (resp. value-a and value-b). So, key2 is the parent of keys key3 and key4, key1 is their ancestor, and vice versa, key3 and key4 are children to key2, and descendants of key1. 
-
+ 
 ## Data stores
 
 ### Relational databases
@@ -401,26 +399,33 @@ and a list nested one level deep looks like:
 
 ## Types
 
-Whereas K-V only supports pairs in one set (a tuple), with the atomic data types (boolean, number, Minicode character and empty) and one compound data type (string), Confetti also supports other compound data types: multiple sets and levels of sets (tuples, clans and hordes), maps (as a syntactic path notation for nested pairs), lists, plus their empty type.
+Whereas K-V only supports pairs in one set (a tuple), with the atomic data types (boolean, number, Minicode character and empty) and one compound data type (string), Confetti also supports other compound data types: multiple sets and levels of sets (tuples, clans and hordes), tables, maps (as a syntactic path notation for nested pairs), lists, plus their empty type.
 
 For the support for atomic datatypes, see the [Types](https://github.com/rolancon/key-value/blob/main/README.md#types) section in K-V.
 
-Clans (sets of tuples) are multiple section headers with separate sets:
-    [set1,]
+Clans  are sets which contains tuples:
 
-    [set2,]
-
-Multiple sets with nested tuples (sets of pairs) are supported using section headers with bodies:
-
-    [set1,]
+    [clan1]
     tuple1-key1=value-a
     tuple1-key2=value-b
 
-    [set2,]
+Multiple sets with nested tuples (sets of pairs) are supported using section headers with bodies:
+
+    [clan]
+    tuple1-key1=value-a
+    tuple1-key2=value-b
+
+    [clan]
     tuple1-key1=value-c
     tuple1-key2=value-d
 
-Hordes (sets of clans) are not directly expressed in Confetti, but are supported through multiple files in the same directory, where each file is a separate horde containing its own clans. The filename is then the name of the horde, and should therefore conform to the [terms naming convention](https://github.com/rolancon/key-value/tree/main#terms) as explained in K-V.
+Hordes are sets which contains clans. They are denoted with double square bracket operators _[[]]_, and can contain nested clans:
+
+   [[horde-a]]
+   
+   [[horde-b]]
+   [clan-a]
+   [clan-b]
 
 A set in Confetti is multiple values separated by commas **,**:
 
@@ -450,7 +455,7 @@ which reuse the separators of sets, maps and lists.
 
 An empty pair can only be denoted in the context of an empty map where 'the pair is empty': **.**.
 
-Empty tuples, clans and hordes, since they are also sets, are also denoted as an empty set: **,**.
+An  empty table is the same as an empty clan. Empty tuples, clans and hordes, since they are also sets, are also denoted as an empty set: **,**.
 
 ### Type tags
 
