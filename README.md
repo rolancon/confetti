@@ -465,7 +465,11 @@ Confetti supports tagging terms with types. Tagging is done using the single quo
 
 The tags are one-letter abbreviations of all the types that K-V and Confetti support:
 
-    ;primitive types
+    ;;
+      primitive types
+    ;;
+    
+    ;scalar types
     atom = a
     boolean = b
     number = n
@@ -474,7 +478,7 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
     real = r
     character = m ;Minicode
 
-    ;scalar types
+    ;compound types
     compound = o ;cOmpOund
     string = v ;Varchar
     pair = p
@@ -484,14 +488,24 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
     horde = h
 
     ;special types
-    term = w ;Word
     map = e ;trEE path
     list = l
     table = q ;sQl sQuare
-    empty = y ;emptY tYpe
     blob = d ;hexiDecimal byte-encoDing
-    
-    ;reserved types
+
+    ;;
+     reference type
+    ;;
+    term = w ;Word
+
+    ;;
+     union type
+    ;;
+    empty = y ;emptY tYpe
+
+    ;;
+     reserved types
+    ;;
     unicode-codepoint = u
     unicode-text = x ;unicode teXt
     json-string = j
