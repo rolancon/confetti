@@ -476,7 +476,7 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
 
     ;scalar types
     compound = o ;cOmpOund
-    string = v ; sql Varchar
+    string = v ;Varchar
     pair = p
     set = s
     tuple = t
