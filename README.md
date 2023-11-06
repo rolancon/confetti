@@ -14,11 +14,11 @@ Just as in K-V, the syntax of Confetti for data structures is limited to the cha
 
 ### Configuration files
 
-Since the syntax of Confetti is directly derived from configuration files, the basic section headers and key-value pairs are equivalent to configs. A section header consists of opening and closing sqaure brackets _[]_ which contain a term:
+Since the syntax of Confetti is directly derived from configuration files, the basic section headers and key-value pairs are equivalent to configs. A section header consists of opening and closing square brackets _[]_ which contain a term:
 
     [term]
 
-The section can contains whitespace, but this is not recommended:
+The section header can contains whitespace, but this is not recommended:
 
     [
      term
