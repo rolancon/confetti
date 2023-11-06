@@ -497,7 +497,7 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
     json-string = j
     date = g ;GreGorian date
     time = k ; clocKtime
-    timezone-offset = z ;timeZone
+    timezone-offset = z ;timeZone Zulu-time
     
 A term which is of type number would then become:
 
