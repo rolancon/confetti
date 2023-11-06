@@ -18,7 +18,7 @@ Since the syntax of Confetti is directly derived from configuration files, the b
 
     [term]
 
-The section header can contains whitespace, but this is not recommended:
+The section header can contain whitespace, but this is not recommended:
 
     [
      term
