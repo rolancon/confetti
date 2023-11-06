@@ -465,31 +465,36 @@ Confetti supports tagging terms with types. Tagging is done using the single quo
 
 The tags are one-letter abbreviations of all the types that K-V and Confetti support:
 
-    empty = e
-    type = y ;non-empty tYpe
+    ;primitive types
     atom = a
-    term = w ;Word
     boolean = b
     number = n
     integer = i
     fraction = f
     real = r
-    character = d ;minicoDe character
+    character = m ;Minicode
+
+    ;scalar types
     compound = o ;cOmpOund
-    character-range = j ;range ranJe
     string = v ; sql Varchar
     pair = p
     set = s
-    map = m
-    list = l
     tuple = t
     clan = c
     horde = h
-    table = q ;sQuare
 
-    ;reserved type tags
+    ;special types
+    term = w ;Word
+    map = e ;trEE path
+    list = l
+    table = q ;sQl sQuare
+    empty = y ;emptY tYpe
+    ? = d ; 
+    
+    ;reserved types
     unicode-codepoint = u
     unicode-text = x ;unicode teXt
+    json-string = j
     date = g ;GreGorian date
     time = k ; clocKtime
     timezone-offset = z ;timeZone
