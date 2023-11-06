@@ -489,7 +489,7 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
     list = l
     table = q ;sQl sQuare
     empty = y ;emptY tYpe
-    ? = d ; 
+    blob = d ;hexiDecimal encoDing
     
     ;reserved types
     unicode-codepoint = u
@@ -512,7 +512,7 @@ Another form of tagging is for certain compound terms. They can be tagged with t
     XML = xml
     JSON = json
 
-    ;combi types
+    ;RDF subtypes
     RDF-XML = rdf/xml
     Turtle = rdf/turtle
     JSON-LD = rdf/jsonld
