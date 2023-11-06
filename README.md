@@ -489,7 +489,7 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
     list = l
     table = q ;sQl sQuare
     empty = y ;emptY tYpe
-    blob = d ;hexiDecimal encoDing
+    blob = d ;hexiDecimal byte-encoDing
     
     ;reserved types
     unicode-codepoint = u
