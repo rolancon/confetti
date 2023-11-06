@@ -506,13 +506,16 @@ A term which is of type number would then become:
 Another form of tagging is for certain compound terms. They can be tagged with the type of grammar they denote, and are named after the file extensions of file formats that represent these types of grammar:
 
     SQL = sql
-    RDF = rdf-xml
-    Turtle = rdf-turtle
-    JSON-LD = rdf-jsonld
+    RDF = rdf
     GML = gml ;Graph Modelling Language    
     CSV = xsv
     XML = xml
     JSON = json
+
+    ;combi types
+    RDF-XML = rdf/xml
+    Turtle = rdf/turtle
+    JSON-LD = rdf/jsonld
 
 The XML example from the XML section could then be tagged as follows:
 
