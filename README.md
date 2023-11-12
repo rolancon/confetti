@@ -4,7 +4,7 @@ Confetti is a generic data description language with semantics based on _Data Al
 The data structures in Confetti mirror those found in [Data Algebra](https://algebraixlib.readthedocs.io/en/latest/intro.html), which is based entirely on [Zermelo-Fraenkel set theory with the axiom of choice (ZFC)](https://en.wikipedia.org/wiki/Zermelo-Fraenkel_set_theory).
 
 The basic data structure in Data Algebra is a _Couplet_, called a _pair_ in Confetti. This is very similar to a key-value pair, where the key gives context for (describes) the value. See [K-V](https://github.com/rolancon/key-value) for more information.
-Couplets can be grouped together in a _set_: these are called _Relations_ in Data Algebra, and _tuples_ in Confetti. Tuples are quite similar to records in a database. Tuples in turn are then grouped together in an enclosing set, know as a _Clan_, which mimics a table in a database schema. Finally, Clans could be grouped together in a set called a _Horde_, which is somewhat equivalent to a database.
+Couplets can be grouped together in a _set_: these are called _Relations_ in Data Algebra, and _records_ in Confetti. Records are like records in a database. Records in turn are then grouped together in an enclosing set, know as a _Clan_, which mimics a table in a database schema. Finally, Clans could be grouped together in a set called a _Horde_, which is somewhat equivalent to a database.
 
 These four data structures can generically model many different types of data stores and data formats, e.g.: key-value stores and [dynamically typed values](https://github.com/rolancon/key-value/blob/main/README.md#types) as in K-V, and configuration files, document stores, relational databases, RDF triple stores, graph databases, CSV files, spreadsheets, XML and JSON as in Confetti. The syntax to model these sets and pairs is derived from [configuration files](https://github.com/madmurphy/libconfini/blob/master/MANUAL.md), also known as [INI files](https://en.wikipedia.org/wiki/INI_file) on Windows.
 
@@ -40,7 +40,7 @@ This is even more convenient when you need to store multiple pairs under the sam
     key1 = value1
     key2 = value2
 
-The combinations of pairs constitutes a set and is called a tuple.
+The combinations of pairs constitutes a set and is called a record.
 
 ### Global and local values
 
@@ -100,7 +100,7 @@ In this example, the root is key1, which is extended with key2, together forming
 
 ### Relational databases
 
-Relational databases extend further on document stores. There are multiple tuples (often called relations, records or rows). The tuples have similar keys (known as columns), but different values (or fields). The tuples are also are numbered incrementally.  This can be achieved automatically as follows:
+Relational databases extend further on document stores. There are multiple records (often called relations or rows). The records have similar keys (known as columns), but different values (or fields). The records are also are numbered incrementally.  This can be achieved automatically as follows:
 
     [table,]
     /
@@ -110,7 +110,7 @@ Relational databases extend further on document stores. There are multiple tuple
     key1 = value-c
     key2 = value-d
 
-The table header ends with a comma **,** to indicate that this is a separate set (a clan in Data Algebra terminology). The _/_ operator automatically increases a counter, and uses this in a new pair, where the counter is the key, and the tuple is the value. So the first tuple would then be identical to:
+The table header ends with a comma **,** to indicate that this is a separate set (a clan in Data Algebra terminology). The _/_ operator automatically increases a counter, and uses this in a new pair, where the counter is the key, and the record is the value. So the first record would then be identical to:
 
     [1]
     key1 = value-a
@@ -118,12 +118,12 @@ The table header ends with a comma **,** to indicate that this is a separate set
 
 the second one would have a new section header _[2]_, etc. These numbers are not supported for explicit, external term names (see section Terms), they are considered implicit, internal term names.
 
-There are no _null_ values in set theory, therefore if a field value is _null_ in one of the tuples, then just leave it out. Suppose _value-c_ of _key1_ is _null_ in the second row:
+There are no _null_ values in set theory, therefore if a field value is _null_ in one of the records, then just leave it out. Suppose _value-c_ of _key1_ is _null_ in the second row:
 
     /
     key2 = value-d
 
-A table could optionally also contain a separate schema, which is a set of all the columns used in the tuples:
+A table could optionally also contain a separate schema, which is a set of all the columns used in the records:
 
     [table1,]
     key1, key2
@@ -236,7 +236,7 @@ To anotate a node which is not the end node, add the path to the node to be anno
 
 If the above annotation appears in a Confetti file in addition to the previous annotation, then they are additive, meaning both b and c nodes will get an annotation. This process can be repeated for any node that needs a label or annotation.
 
-Annotations are part of a set (tuples), therefore there can be more than one:
+Annotations are part of a set (records), therefore there can be more than one:
 
     [a.b]
     key-for-b = some-value
@@ -343,7 +343,7 @@ Headerless CSV files have no column names and depend on order, mandated with sla
     /
     field-value-c/field-value-d
 
-The slashes between the field values cause them to be added as a list (pairs in a set, with an autoincrementing number for the left and the actual field value for the right).
+The slashes between the field values cause them to be added as a list (pairs in a set, with an autoincrementing number for the left and the actual field value for the right). Lists are also called tuples.
 
 ### Spreadsheets
 
@@ -409,25 +409,25 @@ and a list nested one level deep looks like:
 
 ## Types
 
-Whereas K-V only supports pairs in one set (a tuple), with the atomic data types (boolean, number, Minicode character and empty) and one compound data type (string), Confetti also supports other compound data types: multiple sets and levels of sets (tuples, clans and hordes), tables, maps (as a syntactic path notation for nested pairs), lists, plus their empty type.
+Whereas K-V only supports pairs in one set (a record), with the atomic data types (boolean, number, Minicode character and empty) and one compound data type (string), Confetti also supports other compound data types: multiple sets and levels of sets (records, clans and hordes), tables, maps (as a syntactic path notation for nested pairs), lists, plus their empty type.
 
 For the support for atomic datatypes, see the [Types](https://github.com/rolancon/key-value/blob/main/README.md#types) section in K-V.
 
-Clans  are sets which contains tuples:
+Clans  are sets which contains records:
 
     [clan1]
-    tuple1-key1=value-a
-    tuple1-key2=value-b
+    record1-key1=value-a
+    record1-key2=value-b
 
-Multiple sets with nested tuples (sets of pairs) are supported using section headers with bodies:
-
-    [clan]
-    tuple1-key1=value-a
-    tuple1-key2=value-b
+Multiple sets with nested records (sets of pairs) are supported using section headers with bodies:
 
     [clan]
-    tuple1-key1=value-c
-    tuple1-key2=value-d
+    record1-key1=value-a
+    record1-key2=value-b
+
+    [clan]
+    record1-key1=value-c
+    record1-key2=value-d
 
 Hordes are sets which contains clans. They are denoted with double square bracket operators _[[]]_, and can contain nested clans:
 
@@ -465,7 +465,7 @@ which reuse the separators of sets, maps and lists.
 
 An empty pair can only be denoted in the context of an empty map where 'the pair is empty': **.**.
 
-An  empty table is the same as an empty clan. Empty tuples, clans and hordes, since they are also sets, are also denoted as an empty set: **,**.
+An  empty table is the same as an empty clan. Empty records, clans and hordes, since they are also sets, are also denoted as an empty set: **,**.
 
 ### Type tags
 
@@ -485,23 +485,23 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
     number = n
     integer = i
     fraction = f
-    real = r
+    real = d ;Decimal Double
     character = m ;Minicode
 
     ;compound types
     compound = o ;cOmpOund
     string = v ;Varchar
-    pair = p
+    pair = p ;couPlet
     set = s
-    tuple = t
+    record = r ;relation
     clan = c
     horde = h
 
     ;special types
-    map = e ;trEE path
-    list = l
-    table = q ;sQl sQuare
-    blob = d ;hexiDecimal byte-encoDing
+    map = q ;tree path
+    list = l ;tupLe
+    table = t
+    blob = e ;hExidecimal byte-Encoding
 
     ;;
      reference type
