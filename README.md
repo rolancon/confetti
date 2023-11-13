@@ -4,7 +4,7 @@ Confetti is a generic data description language with semantics based on _Data Al
 The data structures in Confetti mirror those found in [Data Algebra](https://algebraixlib.readthedocs.io/en/latest/intro.html), which is based entirely on [Zermelo-Fraenkel set theory with the axiom of choice (ZFC)](https://en.wikipedia.org/wiki/Zermelo-Fraenkel_set_theory).
 
 The basic data structure in Data Algebra is a _Couplet_, called a _pair_ in Confetti. This is very similar to a key-value pair, where the key gives context for (describes) the value. See [K-V](https://github.com/rolancon/key-value) for more information.
-Couplets can be grouped together in a _set_: these are called _Relations_ in Data Algebra, and _records_ in Confetti. Records are like records in a database. Records in turn are then grouped together in an enclosing set, know as a _Clan_, which mimics a table in a database schema. Finally, Clans could be grouped together in a set called a _Horde_, which is somewhat equivalent to a database.
+Couplets can be grouped together in a _set_: these are called _Relations_ in Data Algebra, and _records_ in Confetti. Records are like records in a database. Records in turn are then grouped together in an enclosing set, know as a _Clan_, which mimics a table in a database schema. In Confetti Clan is called a _quadrant_ or simply a _quad_.Finally, Quads could be grouped together in a set called a _Horde_, which is somewhat equivalent to a database. A Horde is called a _hyperbase_ in Confetti, abbreviated to _hyper_.
 
 These four data structures can generically model many different types of data stores and data formats, e.g.: key-value stores and [dynamically typed values](https://github.com/rolancon/key-value/blob/main/README.md#types) as in K-V, and configuration files, document stores, relational databases, RDF triple stores, graph databases, CSV files, spreadsheets, XML and JSON as in Confetti. The syntax to model these sets and pairs is derived from [configuration files](https://github.com/madmurphy/libconfini/blob/master/MANUAL.md), also known as [INI files](https://en.wikipedia.org/wiki/INI_file) on Windows.
 
@@ -110,7 +110,7 @@ Relational databases extend further on document stores. There are multiple recor
     key1 = value-c
     key2 = value-d
 
-The table header ends with a comma **,** to indicate that this is a separate set (a clan in Data Algebra terminology). The _/_ operator automatically increases a counter, and uses this in a new pair, where the counter is the key, and the record is the value. So the first record would then be identical to:
+The table header ends with a comma **,** to indicate that this is a separate set (a Quad in Confetti terminology). The _/_ operator automatically increases a counter, and uses this in a new pair, where the counter is the key, and the record is the value. So the first record would then be identical to:
 
     [1]
     key1 = value-a
@@ -140,7 +140,7 @@ In order to add more than one table just add more table headers:
 
     [table2,]
 
-The Confetti file that contains these table definitions constitutes the database (or the horde in Data Algebra terminology). A file could be named _customer-db.cft_ to indicate that it contains the schema and data of a customer database, consisting of several tables that constitute the database.
+The Confetti file that contains these table definitions constitutes the database (or the Hyper in Confetti terminology). A file could be named _customer-db.cft_ to indicate that it contains the schema and data of a customer database, consisting of several tables that constitute the database.
 
 ### RDF triple stores
 
@@ -347,7 +347,7 @@ The slashes between the field values cause them to be added as a list (pairs in 
 
 ### Spreadsheets
 
-Spreadsheets have some similarities with CSV files with a header. The fields in a spreadsheet are called _cells_, and their layout and naming is also dictated through named verticals columns and numbered horizontal rows.  Since one spreadsheet can contain multiple tabs, a tab is part of a set (a clan).
+Spreadsheets have some similarities with CSV files with a header. The fields in a spreadsheet are called _cells_, and their layout and naming is also dictated through named verticals columns and numbered horizontal rows.  Since one spreadsheet can contain multiple tabs, a tab is part of a set (a quad).
 
     [spreadheet-tab,]
     /
@@ -409,33 +409,33 @@ and a list nested one level deep looks like:
 
 ## Types
 
-Whereas K-V only supports pairs in one set (a record), with the atomic data types (boolean, number, Minicode character and empty) and one compound data type (string), Confetti also supports other compound data types: multiple sets and levels of sets (records, clans and hordes), tables, maps (as a syntactic path notation for nested pairs), lists, plus their empty type.
+Whereas K-V only supports pairs in one set (a record), with the atomic data types (boolean, number, Minicode character and empty) and one compound data type (string), Confetti also supports other compound data types: multiple sets and levels of sets (records, quads and hypers), tables, maps (as a syntactic path notation for nested pairs), lists, plus their empty type.
 
 For the support for atomic datatypes, see the [Types](https://github.com/rolancon/key-value/blob/main/README.md#types) section in K-V.
 
-Clans  are sets which contains records:
+Quads are sets which contains records:
 
-    [clan1]
+    [quad1]
     record1-key1=value-a
     record1-key2=value-b
 
 Multiple sets with nested records (sets of pairs) are supported using section headers with bodies:
 
-    [clan]
+    [quad]
     record1-key1=value-a
     record1-key2=value-b
 
-    [clan]
+    [quad]
     record1-key1=value-c
     record1-key2=value-d
 
-Hordes are sets which contains clans. They are denoted with double square bracket operators _[[]]_, and can contain nested clans:
+Hypers are sets which contains quads. They are denoted with double square bracket operators _[[]]_, and can contain nested quads:
 
-    [[horde-a]]
+    [[hyper-a]]
    
-    [[horde-b]]
-    [clan-a]
-    [clan-b]
+    [[hyper-b]]
+    [quad-a]
+    [quad-b]
 
 A set in Confetti is multiple values separated by commas **,**:
 
@@ -465,7 +465,7 @@ which reuse the separators of sets, maps and lists.
 
 An empty pair can only be denoted in the context of an empty map where 'the pair is empty': **.**.
 
-An  empty table is the same as an empty clan. Empty records, clans and hordes, since they are also sets, are also denoted as an empty set: **,**.
+An  empty table is the same as an empty quad. Empty records, quads and hypers, since they are also sets, are also denoted as an empty set: **,**.
 
 ### Type tags
 
@@ -493,9 +493,9 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
     string = v ;Varchar
     pair = p ;couPlet
     set = s
-    record = r ;relation
-    quadrant = q ;Quad, clan
-    hyperbase = h ;Hyper horde
+    record = r ;Relation
+    quad = q ;Quadrant, clan
+    hyper = h ;Hyperbase, Horde
 
     ;special types
     map = m ;tree, path
