@@ -480,13 +480,13 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
     ;;
     
     ;scalar types
-    atom = a
+    scalar = a ;scAlAr Atom
     boolean = b
     number = n
     integer = i
     fraction = f
     real = d ;Decimal Double
-    character = m ;Minicode
+    character = c ;lazyCode miniCode
 
     ;compound types
     compound = o ;cOmpOund
@@ -494,11 +494,11 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
     pair = p ;couPlet
     set = s
     record = r ;relation
-    clan = c
-    horde = h
+    quadrant = q ;Quad, clan
+    hyperbase = h ;Hyper horde
 
     ;special types
-    map = q ;tree path
+    map = m ;tree, path
     list = l ;tupLe
     table = t
     blob = e ;hExidecimal byte-Encoding
@@ -521,7 +521,7 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
     json-string = j
     date = g ;GreGorian date
     time = k ; clocKtime
-    timezone-offset = z ;timeZone Zulu-time
+    timezone-offset = z ;timeZone, Zulu-time
     
 A term which is of type number would then become:
 
