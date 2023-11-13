@@ -41,39 +41,7 @@ This is even more convenient when you need to store multiple pairs under the sam
     key2 = value2
 
 The combinations of pairs constitutes a set and is called a record.
-
-### Global and local values
-
-Pairs that are part of the root set (not nested under a section header) are considered global values, otherwise they are local values. It is possible to refer from a local value to a global value. This can be useful for a number of reasons. One is that you would like to use more commonly known terms for the operators that implement the false and true values:
-
-    false = -
-    true == --
-
-    [section-header]
-    local-bool == false
-
-The double equals sign **==** forces the parser/interpreter to eagerly evaluate the local value. If the value is a term, it will do a lookup in the global key-value space (which has been parsed first). In this case it will find that _false = -_, and then replace _local-bool_'s value with _-_. In other words, after the parse it has interpreted this section as:
-
-    [section-header]
-    local-bool = -
-
-with one equals sign as usual.
-
-Note that you cannot refer to an anonymous (unnamed) term, only to named terms.
-
-If the local value is empty, or the global term does not exist, then this will result in the null operator:
-
-    [section-header]
-    local-key == 
-    local-key == tru
-
-These will all result in:
-
-    [section-header]
-    local-key = []
-
-Note that an empty value behind one equals sign results in an empty string (_''_), whereas an empty value behind two equals signs results in the null operator (_[]_).
-
+   
 ### Document stores
 
 Document stores have more deeply nested structures. To support them use a _section header_ like in a configuration file: a section header consists of a pair of square brackets **[ ]**. In between the square brackets you specific the _path_ from one key to the next key, separated by dots **.**. Under the section header you specify the pairs that are nested in the key path:
@@ -549,3 +517,45 @@ The XML example from the XML section could then be tagged as follows:
     attribute2 = value
      [.inner-tag]
      text
+
+## Global and local values
+
+Pairs that are part of the root set (not nested under a section header) are considered global values, otherwise they are local values. It is possible to refer from a local value to a global value. This can be useful for a number of reasons. One is that you would like to use more commonly known terms for the operators that implement the false, true and null values:
+
+    false = -
+    true = --
+    null = []
+
+These three aliases are actually already predefined in Confetti, and cannot be overridden (for the sake of easy compatibility with JSON).
+
+A global value can then be referenced from a local value:
+
+    [section-header]
+    local-bool == false
+
+The double equals sign **==** forces the parser/interpreter to eagerly evaluate the local value. If the value is a term, it will do a lookup in the global key-value space (which has been parsed first). In this case it will find that _false = -_, and then replace _local-bool_'s value with _-_. In other words, after the parse it has interpreted this section as:
+
+    [section-header]
+    local-bool = -
+
+with one equals sign as usual.
+
+Note that you refer to a minus sign as false value, but if you evaluatie it, it results in evaluating the anonymous _-_ term:
+    false-value = -
+    anonymous-value == -
+
+If the local value is empty, or the global term does not exist, or you evaluate the null operator, then this will result in a reference to the null operator:
+
+    [section-header]
+    local-key == 
+    local-key == tru
+    local-key == []
+
+These will all result in:
+
+    [section-header]
+    local-key = []
+
+Note that an empty value behind one equals sign results in an empty string value (_''_), whereas an empty value behind two equals signs results in the null operator (_[]_).
+   empty-string =     ; ''
+   null-operator ==    ; []
