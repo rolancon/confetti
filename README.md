@@ -70,15 +70,15 @@ In this example, the root is key1, which is extended with key2, together forming
 
 Relational databases extend further on document stores. There are multiple records (often called relations or rows). The records have similar keys (known as columns), but different values (or fields). The records are also are numbered incrementally.  This can be achieved automatically as follows:
 
-    [table,]
-    /
+    [table/]
+    ,
     key1 = value-a
     key2 = value-b
-    /
+    ,
     key1 = value-c
     key2 = value-d
 
-The table header ends with a comma **,** to indicate that this is a separate set (a Quad in Confetti terminology). The _/_ operator automatically increases a counter, and uses this in a new pair, where the counter is the key, and the record is the value. So the first record would then be identical to:
+The table header ends with a slash **/** to indicate that this is a separate set (a Quad in Confetti terminology). The _,_ operator automatically increases a counter, and uses this in a new pair, where the counter is the key, and the record is the value. So the first record would then be identical to:
 
     [1]
     key1 = value-a
@@ -88,25 +88,25 @@ the second one would have a new section header _[2]_, etc. These numbers are not
 
 There are no _null_ values in set theory, therefore if a field value is _null_ in one of the records, then just leave it out. Suppose _value-c_ of _key1_ is _null_ in the second row:
 
-    /
+    ,
     key2 = value-d
 
 A table could optionally also contain a separate schema, which is a set of all the columns used in the records:
 
-    [table1,]
-    key1, key2
-    /
+    [table1/]
+    key1/key2
+    ,
 
 Internally the schema is stored under number 0:
 
     [0]
-    key1, key2
+    key1/key2
 
 In order to add more than one table just add more table headers:
 
-    [table1,]
+    [table1/]
 
-    [table2,]
+    [table2/]
 
 The Confetti file that contains these table definitions constitutes the database (or the Hyper in Confetti terminology). A file could be named _customer-db.cft_ to indicate that it contains the schema and data of a customer database, consisting of several tables that constitute the database.
 
@@ -234,11 +234,11 @@ Nodes can also connect to themselves:
     
 Next to directed edges, graphs also support simple edges (the nodes are connected without direction from one node to the other). These nodes are simply sets:
 
-    a, b, c
+    a/b/c
 
 Adding a label or annotation to a set will cause all nodes to have the same label. I.e.,
 
-    [a, b, c]
+    [a/b/c]
     label
 
 will result in:
@@ -254,24 +254,24 @@ Since that is probably not what you intented, just add labels separately with a 
 
 and also in this case, using multiple nodes as in a set will add the same annotation to all nodes:
 
-    [a, b]
+    [a/b]
     key = value
 
 After this both nodes a and b have annotation key = value.
 
 Edges can also get labels or annotations. For directed graphs, use the following syntax:
 
-    [a/b]
+    [a, b]
     edge-label
 
-The slash **/** indicates that the set operations should be done on the edge, not on the nodes. Again, like with nodes, labels or annotations on a directed graph are only added to the final edge:
+The comma **,** indicates that the set operations should be done on the edge, not on the nodes. Again, like with nodes, labels or annotations on a directed graph are only added to the final edge:
 
-    [a/b/c]
+    [a, b, c]
     edge-key = value
 
 will only add the annotation to the final edge between nodes b and c. To add one on the first edge between nodes a and b, repeat the path in another section header:
 
-    [a/b]
+    [a, b]
     edge-key-a-b = value
 
 Adding labels and annotations to a simple graph uses the following syntax:
@@ -292,12 +292,12 @@ To add a label or annotation to just one edge, only repeat that path in a separa
 
 CSV files are quite similar to tables in relational databases. The following example is derived from an earlier example in the relational databases section:
 
-    [csv-file,]
-    column1, column2
-    /
+    [csv-file/]
+    column1/column2
+    ,
     column1 = field-value-a
     column2 = field-value-b
-    /
+    ,
     column1 = field-value-c
     column2 = field-value-d
 
@@ -305,11 +305,11 @@ which models a CSV file with a header column1, column2 and two rows with field v
 
 Headerless CSV files have no column names and depend on order, mandated with slashes:
 
-    [csv-file,]
-    /
-    field-value-a/field-value-b
-    /
-    field-value-c/field-value-d
+    [csv-file/]
+    ,
+    field-value-a, field-value-b
+    ,
+    field-value-c, field-value-d
 
 The slashes between the field values cause them to be added as a list (pairs in a set, with an autoincrementing number for the left and the actual field value for the right). Lists are also called tuples.
 
@@ -317,25 +317,25 @@ The slashes between the field values cause them to be added as a list (pairs in 
 
 Spreadsheets have some similarities with CSV files with a header. The fields in a spreadsheet are called _cells_, and their layout and naming is also dictated through named verticals columns and numbered horizontal rows.  Since one spreadsheet can contain multiple tabs, a tab is part of a set (a quad).
 
-    [spreadheet-tab,]
-    /
+    [spreadheet-tab/]
+    ,
     aa = some-amount
     ac = cell-value-ac1
-    /
+    ,
     aa = some-other-amount
     ac = cell-value-ac2
-    /
-    /
+    ,
+    ,
     aa = total
     ac = sum-of-ac1-and-ac2
 
 The aa columnn contains the labels: two rows with names in their cells, labelling the column next to it (ac) as containing different amounts. As you can see from the naming, the second column, ab, has been skipped. The third row is skipped, and the fourth row shows that the cell value in column ac contains the total: the sum of the two cell values of the first two two rows in the same column.
-    
+
 ### XML
 
 The hierarchical structure of XML, consisting of nested _tags_ and the possibility of _attributes_ (with or without value) on tags can be modelled straightforward way in Confetti. Text in a tag can only be modelled if it's contained in a leaf node, not in the case of mixed nodes (nodes containinig a mix of nodes and text):
 
-    [xml-file,]
+    [xml-file/]
     [outer-tag]
     attribute1 = 
     attribute2 = value
@@ -366,14 +366,14 @@ An example of an object containing two toplevel pairs:
 
 Confetti does not have a direct equivalent for arrays, which are ordered, indexed lists. A list nested at most one level deep can be modelled similar to CSV files without a header, with autogenerated numbers for the left-hand side of pairs, where the list values are then on the right. A single list looks like:
 
-    list-value1/list-value2
+    list-value1, list-value2
 
 and a list nested one level deep looks like:
 
-    /
-    list-value1/list-value2
-    /
-    list-value3/list-value4
+    ,
+    list-value1, list-value2
+    ,
+    list-value3, list-value4
 
 ## Types
 
@@ -405,21 +405,21 @@ Hypers are sets which contains quads. They are denoted with double square bracke
     [quad-a]
     [quad-b]
 
-A set in Confetti is multiple values separated by commas **,**:
+A set in Confetti is multiple values separated by slashes **/**:
 
-    set = a, b, c
+    set = a/b/c
 
 A map is multiple values separated by dots **.**:
 
     map = a.b.c
 
-A list in Confetti is multiple values separated by slashes **/**:
+A list in Confetti is multiple values separated by scommas **,**:
 
-    list = a/b/c
+    list = a, b, c
 
 Moreover, Confetti has special notations for an empty set
 
-    empty-set = ,
+    empty-set = /
 
 and an empty map
 
@@ -427,13 +427,13 @@ and an empty map
     
 and an empty list
 
-    empty-list = /
+    empty-list = ,
 
 which reuse the separators of sets, maps and lists.
 
 An empty pair can only be denoted in the context of an empty map where 'the pair is empty': **.**.
 
-An  empty table is the same as an empty quad. Empty records, quads and hypers, since they are also sets, are also denoted as an empty set: **,**.
+An  empty table is the same as an empty quad. Empty records, quads and hypers, since they are also sets, are also denoted as an empty set: **/**.
 
 ### Type tags
 
@@ -511,7 +511,7 @@ Another form of tagging is for certain compound terms. They can be tagged with t
 
 The XML example from the XML section could then be tagged as follows:
 
-    [doc'xml,]
+    [doc'xml/]
     [outer-tag]
     attribute1 = 
     attribute2 = value
@@ -559,3 +559,4 @@ These will all result in:
 Note that an empty value behind one equals sign results in an empty string value (_''_), whereas an empty value behind two equals signs results in the null operator (_[]_).
    empty-string =     ; ''
    null-operator ==    ; []
+
