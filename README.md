@@ -500,7 +500,7 @@ Another form of tagging is for certain compound terms. They can be tagged with t
     SQL = sql
     RDF = rdf
     GML = gml ;Graph Modelling Language
-    CSV = xsv
+    CSV = xsv ;XSV
     XML = xml
     JSON = json
 
