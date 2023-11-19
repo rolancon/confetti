@@ -499,8 +499,8 @@ Another form of tagging is for certain compound terms. They can be tagged with t
 
     SQL = sql
     RDF = rdf
-    GML = gml ;Graph Modelling Language    
-    CSV = xsv
+    GML = gml ;[Graph Modelling Language](https://en.wikipedia.org/wiki/Graph_Modelling_Language)    
+    CSV = xsv ;[XSV](https://github.com/rolancon/xsv)
     XML = xml
     JSON = json
 
