@@ -94,13 +94,13 @@ There are no _null_ values in set theory, therefore if a field value is _null_ i
 A table could optionally also contain a separate schema, which is a set of all the columns used in the records:
 
     [table1/]
-    key1/key2
+    key1 / key2
     ,
 
 Internally the schema is stored under number 0:
 
     [0]
-    key1/key2
+    key1 / key2
 
 In order to add more than one table just add more table headers:
 
@@ -234,11 +234,11 @@ Nodes can also connect to themselves:
     
 Next to directed edges, graphs also support simple edges (the nodes are connected without direction from one node to the other). These nodes are simply sets:
 
-    a/b/c
+    a / b / c
 
 Adding a label or annotation to a set will cause all nodes to have the same label. I.e.,
 
-    [a/b/c]
+    [a / b / c]
     label
 
 will result in:
@@ -254,7 +254,7 @@ Since that is probably not what you intented, just add labels separately with a 
 
 and also in this case, using multiple nodes as in a set will add the same annotation to all nodes:
 
-    [a/b]
+    [a / b]
     key = value
 
 After this both nodes a and b have annotation key = value.
@@ -276,14 +276,14 @@ will only add the annotation to the final edge between nodes b and c. To add one
 
 Adding labels and annotations to a simple graph uses the following syntax:
 
-    [a\b\c]
+    [a \ b \ c]
     edge-key = value
 
 which adds the annotation to both edges: from a to b, and from b to c.
 
 To add a label or annotation to just one edge, only repeat that path in a separate section header:
 
-    [a\b]
+    [a \ b]
     edge-label-a-b
 
 ## Data formats
@@ -293,7 +293,7 @@ To add a label or annotation to just one edge, only repeat that path in a separa
 CSV files are quite similar to tables in relational databases. The following example is derived from an earlier example in the relational databases section:
 
     [csv-file/]
-    column1/column2
+    column1 / column2
     ,
     column1 = field-value-a
     column2 = field-value-b
@@ -407,7 +407,7 @@ Hypers are sets which contains quads. They are denoted with double square bracke
 
 A set in Confetti is multiple values separated by slashes **/**:
 
-    set = a/b/c
+    set = a / b / c
 
 A map is multiple values separated by dots **.**:
 
