@@ -4,7 +4,7 @@ Confetti is a generic data description language with semantics based on _Data Al
 The data structures in Confetti mirror those found in [Data Algebra](https://algebraixlib.readthedocs.io/en/latest/intro.html), which is based entirely on [Zermelo-Fraenkel set theory with the axiom of choice (ZFC)](https://en.wikipedia.org/wiki/Zermelo-Fraenkel_set_theory).
 
 The basic data structure in Data Algebra is a _Couplet_, called a _pair_ in Confetti. This is very similar to a key-value pair, where the key gives context for (describes) the value. See [K-V](https://github.com/rolancon/key-value) for more information.
-Couplets can be grouped together in a _set_: these are called _Relations_ in Data Algebra, and _records_ in Confetti. Records are like records in a database. Records in turn are then grouped together in an enclosing set, know as a _Clan_, which mimics a table in a database schema. In Confetti Clan is called a _squad_. Finally, Squads could be grouped together in a set called a _Horde_, which is somewhat equivalent to a database. A Horde is called a _hyperbase_ in Confetti.
+Couplets can be grouped together in a _set_: these are called _Relations_ in Data Algebra, and _records_ in Confetti. Records are like records in a database. Records in turn are then grouped together in an enclosing set, know as a _Clan_, which mimics a table in a database schema. In Confetti Clan is called a _squad_. Finally, Squads could be grouped together in a set called a _Horde_, which is somewhat equivalent to a database (schema). A Horde is called a _hyperbase_ in Confetti.
 
 These four data structures can generically model many different types of data stores and data formats, e.g.: key-value stores and [dynamically typed values](https://github.com/rolancon/key-value/blob/main/README.md#types) as in K-V, and configuration files, document stores, relational databases, RDF triple stores, graph databases, CSV files, spreadsheets, XML and JSON as in Confetti. The syntax to model these sets and pairs is derived from [configuration files](https://github.com/madmurphy/libconfini/blob/master/MANUAL.md), also known as [INI files](https://en.wikipedia.org/wiki/INI_file) on Windows.
 
@@ -462,8 +462,8 @@ The tags are one-letter abbreviations of all the types that K-V and Confetti sup
     pair = p ;couPlet
     set = s
     record = r ;Relation
-    squad = q ;sQuad, clan
-    hyperbase = h ;Horde
+    squad = q ;sQuad clan
+    hyperbase = h ;Horde schema
 
     ;special types
     map = m ;tree, path
